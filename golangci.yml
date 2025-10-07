@@ -1,0 +1,125 @@
+version: "2"
+
+linters:
+  enable:
+    - decorder
+    - dupl
+    - errcheck
+    - errorlint
+    - exhaustive
+    - gocheckcompilerdirectives
+    - gocognit
+    - goconst
+    - gocritic
+    - godot
+    - gosec
+    - govet
+    - intrange
+    - lll
+    - makezero
+    - musttag
+    - nakedret
+    - nilnil
+    - nolintlint
+    - perfsprint
+    - prealloc
+    - revive
+    - sqlclosecheck
+    - unconvert
+    - unparam
+    - unqueryvet
+    - usestdlibvars
+    - usetesting
+    - wsl_v5
+  settings:
+    decorder:
+      disable-dec-order-check: false
+      disable-init-func-first-check: false
+      disable-dec-num-check: false
+      disable-type-dec-num-check: true
+    errcheck:
+      check-type-assertions: true
+      check-blank: false
+      disable-default-exclusions: false
+      verbose: false
+    gocritic:
+      disabled-checks:
+        - exitAfterDefer
+      settings:
+        ifElseChain:
+          minThreshold: 4
+    godot:
+      capital: true
+      period: false
+    gosec:
+      excludes:
+        - G101
+        - G104
+        - G114
+        - G304
+    govet:
+      enable-all: true
+    lll:
+      line-length: 140
+    nakedret:
+      max-func-lines: 0
+    nilnil:
+      only-two: false
+      detect-opposite: true
+    nolintlint:
+      allow-unused: false
+      require-explanation: true
+      require-specific: true
+    revive:
+      enable-all-rules: true
+      rules:
+        - name: add-constant
+          disabled: true
+        - name: cognitive-complexity
+          disabled: true
+        - name: cyclomatic
+          disabled: true
+        - name: enforce-switch-style
+          arguments: ["allowNoDefault"]
+        - name: flag-parameter
+          disabled: true
+        - name: function-length
+          arguments: [110, 200]
+        - name: identical-switch-branches
+          severity: warning
+        - name: line-length-limit
+          arguments: [140]
+        - name: max-public-structs
+          arguments: [20]
+        - name: struct-tag
+          # FIXME No way to disable "validate" only.
+          disabled: true
+        - name: unhandled-error
+          disabled: true
+        - name: var-naming
+          arguments:
+            - [] # AllowList
+            - [] # DenyList
+            - - skip-initialism-name-checks: true
+                upper-case-const: false
+                skip-package-name-checks: true
+    staticcheck:
+      checks:
+        - all
+        # To exclude prepend "-"
+        - -ST1003
+    wsl_v5:
+      default: none
+  exclusions:
+    presets:
+      - comments
+      - std-error-handling
+      #- common-false-positives
+      #- legacy
+    rules:
+      - text: 'shadow: declaration of "err" shadows declaration at'
+        linters:
+          - govet
+      - text: "exported: type name will be used as .+ by other packages, and that stutters"
+        linters:
+          - revive
