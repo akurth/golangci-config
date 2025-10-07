@@ -75,6 +75,8 @@ linters:
       rules:
         - name: add-constant
           disabled: true
+        - name: argument-limit
+          arguments: [10]
         - name: cognitive-complexity
           disabled: true
         - name: cyclomatic
