@@ -89,6 +89,8 @@ linters:
           disabled: true
         - name: function-length
           arguments: [110, 200]
+        - name: function-result-limit
+          arguments: [4]
         - name: identical-switch-branches
           severity: warning
         - name: line-length-limit
