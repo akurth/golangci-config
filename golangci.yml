@@ -88,6 +88,8 @@ linters:
         - name: enforce-switch-style
           arguments:
             - allowNoDefault
+        - name: epoch-naming
+          disabled: true
         - name: flag-parameter
           disabled: true
         - name: function-length
@@ -105,6 +107,8 @@ linters:
         - name: max-public-structs
           arguments:
             - 20
+        - name: package-naming
+          disabled: true
         - name: struct-tag
           # FIXME No way to disable "validate" only.
           disabled: true
