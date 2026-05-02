@@ -47,6 +47,8 @@ linters:
       settings:
         ifElseChain:
           minThreshold: 4
+    goconst:
+      ignore-tests: true
     godot:
       capital: true
       period: false
